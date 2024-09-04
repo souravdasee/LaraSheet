@@ -2,17 +2,15 @@
 
 namespace App\Imports;
 
-use App\Models\Exhibition;
-use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class ExhibitionsImport implements ToModel
+class ExhibitionsImport implements WithMultipleSheets
 {
-    public function model(array $row)
+    public function sheets(): array
     {
-        return new Exhibition([
-            'section'   => $row[0],
-            'country'   => $row[1],
-            'award'     => $row[2],
-        ]);
+        return [
+            1 => new FirstSheetImport(),
+            2 => new FirstSheetImport()
+        ];
     }
 }
