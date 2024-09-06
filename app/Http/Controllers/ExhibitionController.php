@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Imports\ExhibitionsImport;
+use App\Imports\SecondTableImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -17,6 +18,7 @@ class ExhibitionController extends Controller
     {
         // dd($req->file('file'));
         Excel::import(new ExhibitionsImport, $req->file('file'));
+        Excel::import(new SecondTableImport, $req->file('file'));
 
         return back()->with('success', 'All good!');
     }
