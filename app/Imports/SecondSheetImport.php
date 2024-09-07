@@ -22,11 +22,15 @@ class SecondSheetImport implements ToModel, WithHeadingRow, SkipsEmptyRows
 
     public function model(array $row)
     {
-        return new Participant([
-            'name'   => $row['name'],
-            'age'   => $row['age_year'],
-            'item'     => $row['no_of_items'],
-        ]);
+        if ($row['no_of_items'] !== null) {
+            return new Participant([
+                'name'   => $row['name'],
+                'age'   => $row['age_year'],
+                'item'     => $row['no_of_items'],
+            ]);
+        } else {
+            return null;
+        }
     }
 
     // skipping empty rows

@@ -12,19 +12,19 @@ class ItemTableImport implements ToModel, WithMappedCells, WithHeadingRow, Skips
 {
     public function headingRow(): int
     {
-        return 3;   // header row pos.
+        return 11;   // header row pos.
     }
 
     public function startRow(): int
     {
-        return 10;   // header column pos.
+        return 6;   // header column pos.
     }
 
     public function mapping(): array
     {
         return [
-            'item' => 'J4',
-            'amount' => 'K4'
+            'item' => 'F12',
+            'amount' => 'G12'
         ];
     }
 
