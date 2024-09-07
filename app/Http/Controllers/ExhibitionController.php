@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Imports\ItemSheetImport;
 use App\Imports\ExhibitionsImport;
 use App\Imports\SecondTableImport;
+use App\Imports\StudentTableImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExhibitionController extends Controller
@@ -21,6 +22,7 @@ class ExhibitionController extends Controller
         Excel::import(new ExhibitionsImport, $req->file('file'));
         Excel::import(new SecondTableImport, $req->file('file'));
         Excel::import(new ItemSheetImport, $req->file('file'));
+        Excel::import(new StudentTableImport, $req->file('file'));
 
         return back()->with('success', 'All good!');
     }
